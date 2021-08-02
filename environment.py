@@ -34,6 +34,7 @@ from six.moves import range
 from six.moves import zip
 
 import utils
+import hyp
 
 
 class Result(collections.namedtuple("Result", ["state", "reward", "terminated"])):
@@ -324,7 +325,7 @@ class Molecule(object):
         allow_no_modification=True,
         allow_bonds_between_rings=True,
         allowed_ring_sizes=None,
-        max_steps=10,
+        max_steps=hyp.max_steps_per_episode,
         target_fn=None,
         record_path=False,
     ):
