@@ -20,8 +20,9 @@ Forked from https://github.com/aksub99/MolDQN-pytorch
 
 To use **wandb** for better visualization, run `wandb.ipynb`.
 
-The following image an is an example of the training logs.
+The following image is an example of the training logs.<br/>
 ![image](https://user-images.githubusercontent.com/29084981/128024644-e93f9cb3-e63c-44a6-b939-5a040b6367b3.png)
+
 ## Results:
 
 The wandb results should look like the following image.
