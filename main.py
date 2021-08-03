@@ -8,11 +8,11 @@ import numpy as np
 import time
 from run_dqn import Trainer
 import pickle
-#import wandb
+import wandb
 import json
 import os
 from hyp import MODEL_PATH, SAVE_PATH
-
+WANDB_KEY = 'YOUR WANDB LOGIN KEY'
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -22,6 +22,20 @@ else:
 
 os.makedirs(MODEL_PATH, exist_ok=True)
 os.makedirs(SAVE_PATH, exist_ok=True)
+
+
+if hyp.WANDB:
+    os.system("!wandb login WANDB_KEY")
+    wandb.init(project="moldqn_ba", config={
+            "num_episodes" : 10000,
+                "max_steps_per_episode": 30,
+                    "learning_frequency" : 4,
+                        "update_frequency": 20,
+                            "save_frequency": 200,
+                                "num_bootstrap_heads":1,
+                                    "reward_fn": "ba"
+                                    })
+    config = wandb.config
 
 
 environment = newMolecule(
@@ -74,4 +88,9 @@ print(f"========best smiles : {trainer.best[-1][1]}========")
 print(f"========best {hyp.reward_type} score : {trainer.best[-1][2]}========")
 img = trainer.environment.visualize_state(trainer.best[-1][1])
 img.save(SAVE_PATH+"best_smiles.png")
+
+if hyp.WANDB:
+    json_val = json.dumps(config)
+    with open(join(wandb.run.dir, 'config.json'), 'w') as f:
+            json.dump(json_val, f)
 
