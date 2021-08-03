@@ -29,10 +29,9 @@ The following image is an example of the training logs.<br/><br/>
 ## Results:
 
 The wandb results should look like the following image.
-![image]("https://user-images.githubusercontent.com/29084981/128026350-b8b1b1e2-66b0-44c8-88bb-bb06446589f7.png")
-
-
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/29084981/128026350-b8b1b1e2-66b0-44c8-88bb-bb06446589f7.png">
+</p>
 
 
 ## References:
