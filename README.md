@@ -22,14 +22,14 @@ Run `wandb.ipynb` to use **wandb** for better visualization.
 
 The following image is an example of the training logs.<br/><br/>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/29084981/128026350-b8b1b1e2-66b0-44c8-88bb-bb06446589f7.png">
+  <img src="https://user-images.githubusercontent.com/29084981/128024644-e93f9cb3-e63c-44a6-b939-5a040b6367b3.png">
 </p>
 
 
 ## Results:
 
 The wandb results should look like the following image.
-![image]()
+![image]("https://user-images.githubusercontent.com/29084981/128026350-b8b1b1e2-66b0-44c8-88bb-bb06446589f7.png")
 
 
 
