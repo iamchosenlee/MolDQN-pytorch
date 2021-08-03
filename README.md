@@ -6,49 +6,29 @@ license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit
 PyTorch implementation of MolDQN as described in [Optimization of Molecules via Deep Reinforcement Learning](https://www.nature.com/articles/s41598-019-47148-x)
 by Zhenpeng Zhou, Steven Kearnes, Li Li, Richard N. Zare and Patrick Riley.
 
-## Installation
+Forked from https://github.com/aksub99/MolDQN-pytorch
 
-## <a name="source"></a>From source:
+## Added Features and Differences
+* `agent.py` has additional newMolecule, MultiobjectiveREwardMolecule for single optimization / multi-objective optimization with custom reward functions other than QED.
+* Bootstrap DQN option is added to follow the original paper.
+* Tensorboard is removed and wandb is added for logging and visualization.
+* `run_dqn.py` is added to resemble the original tensorflow implementation.
 
-1) Install `rdkit`.  
-   `conda create -c rdkit -n my-rdkit-env rdkit`  
-   `conda activate my-rdkit-env`  
-   `conda install -c conda-forge rdkit`  
-   
-2) Clone this repository.  
-   `git clone https://github.com/aksub99/MolDQN-pytorch.git`  
-   `cd MolDQN-pytorch`
-   
-3) Install the requirements given in `requirements.txt`.  
-   `pip install -r requirements.txt`  
-   
-4) Install `baselines`.  
-   `pip install "git+https://github.com/openai/baselines.git"`  
-   
-## From Docker:
-
-Using a docker image requires an NVIDIA GPU.  If you do not have a GPU please follow the directions for [installing from source](#source)
-In order to get GPU support you will have to use the [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) plugin.
-``` bash
-# Build the Dockerfile in Dockerfiles/Dockerfile to create a Docker image.
-cd Dockerfiles
-docker build -t moldqn_pytorch:latest .
-
-# This will create a container from the image we just created.
-nvidia-docker run -[Options] moldqn_pytorch:latest python path/to/main.py
-```
-Please remember to modify the `TB_LOG_PATH` variable in `main.py` depending on where you wish to store your tensorboard runs file.
 ## Training the MolDQN:
 
-`python main.py`
+`python run_dqn.py`
 
-A simple example to train the model on a single property optimization task can be seen in `examples/MolDQN-pytorch.ipynb`.
+To use **wandb** for better visualization, run `wandb.ipynb`.
 
 ## Results:
 
-The following was the reward curve obtained when the model was trained for 5000 episodes on a single property optimization task (QED in this case).
+The wandb results should look like the following image.
+![image](https://user-images.githubusercontent.com/29084981/128026350-b8b1b1e2-66b0-44c8-88bb-bb06446589f7.png)
 
-<img src="https://github.com/aksub99/MolDQN-pytorch/blob/master/Results/plots/episode_reward.svg" height="500" width="500">
+
+The logs should look like the following image.
+![image](https://user-images.githubusercontent.com/29084981/128024644-e93f9cb3-e63c-44a6-b939-5a040b6367b3.png)
+
 
 ## References:
 The original tensorflow implementation can be found at https://github.com/google-research/google-research/tree/master/mol_dqn
